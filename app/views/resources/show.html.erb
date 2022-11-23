@@ -1,6 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @resource %>
+<div id="field-entry-form">
+  <%= render "field_entries/form" %>
+</div>
+<div id="field-entries">
+  <% @resource.field_entries.each do |field_entry| %>
+    <%= render "field_entries/field_entry", field_entry: field_entry %>
+  <% end %>
+</div>
 
 <div>
   <%= link_to "Edit this resource", edit_resource_path(@resource) %> |

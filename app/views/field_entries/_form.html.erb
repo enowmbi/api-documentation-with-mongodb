@@ -1,0 +1,21 @@
+<%= form_with(model: FieldEntry.new) do |field_entry| %>
+  <div>
+    <%= field_entry.label :name, style: "display: block" %>
+    <%= field_entry.text_field :name %>
+  </div>
+  <div>
+    <%= field_entry.label :description, style: "display: block" %>
+    <%= field_entry.text_area :description %>
+  </div>
+  <div>
+    <%= field_entry.label :default, style: "display: block" %>
+    <%= field_entry.text_field :default %>
+  </div>
+  <div>
+    <%= field_entry.label :type, style: "display: block" %>
+    <%= field_entry.text_field :type %>
+  </div>
+  <p>
+    <%= field_entry.submit %>
+  </p>
+<% end %>
