@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :resources do
     member do
       resources :field_entries
-      resources :end_points
+      resources :end_points do
+        member do
+          resources :query_parameters
+        end
+      end
     end
   end
 end

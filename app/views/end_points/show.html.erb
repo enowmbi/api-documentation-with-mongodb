@@ -2,6 +2,15 @@
 
 <%= render @end_point, resource: @resource %>
 
+<div id="query-parameter-form">
+  <%= render "query_parameters/form" %>
+</div>
+<div id="query-parameters">
+  <% @resource.end_points.each do |end_point| %>
+    <%= render "end_points/end_point", end_point: end_point, resource: @resource %>
+  <% end %>
+</div>
+
 <div>
   <%= link_to "Edit this end point", edit_end_point_path(@resource, @end_point._id) %> |
   <%= link_to "Back to end points", end_points_path %>
