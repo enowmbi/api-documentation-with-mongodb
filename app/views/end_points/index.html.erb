@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= "#{@resource.name.upcase_first} End points" %></h1>
+
+<div id="end_points">
+  <% @end_points.each do |end_point| %>
+    <%= render end_point %>
+    <p>
+      <%= link_to "Show this end point", end_point %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New end point", new_end_point_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @end_point, resource: @resource %>
+
+<div>
+  <%= link_to "Edit this end point", edit_end_point_path(@resource, @end_point._id) %> |
+  <%= link_to "Back to end points", end_points_path %>
+
+  <%= button_to "Destroy this end point", @end_point, method: :delete %>
+</div>

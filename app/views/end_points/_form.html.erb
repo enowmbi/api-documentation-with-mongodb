@@ -1,0 +1,31 @@
+<%= form_with(model: end_point) do |form| %>
+  <% if end_point.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(end_point.errors.count, "error") %> prohibited this end_point from being saved:</h2>
+
+      <ul>
+        <% end_point.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :http_method, style: "display: block" %>
+    <%= form.select :http_method,["GET", "POST", "PUT", "PATCH", "DELETE"] %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
