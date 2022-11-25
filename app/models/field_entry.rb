@@ -1,10 +1,6 @@
 class FieldEntry
   include Mongoid::Document
-
-  field :name, type: String
-  field :description, type: String
-  field :default, type: String
-  field :type, type: String
+  include CommonField
 
   embedded_in :resource
 end
