@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :resources do
     member do
       resources :field_entries
+      resources :end_points
     end
   end
 end
