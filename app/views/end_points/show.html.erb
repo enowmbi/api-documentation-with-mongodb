@@ -2,12 +2,20 @@
 
 <%= render @end_point, resource: @resource %>
 
-<div id="query-parameter-form">
-  <%= render "query_parameters/form" %>
-</div>
-<div id="query-parameters">
+<div id="end-points">
   <% @resource.end_points.each do |end_point| %>
     <%= render "end_points/end_point", end_point: end_point, resource: @resource %>
+  <% end %>
+</div>
+
+<div id="query-parameter-form">
+  <%= render "query_parameters/form", resource: @resource %>
+</div>
+
+<h3>Query Parameters</h3>
+<div id="query-parameters">
+  <% @query_parameters.each do |query_parameter| %>
+    <%= render "query_parameters/query_parameter", query_parameter: query_parameter %>
   <% end %>
 </div>
 

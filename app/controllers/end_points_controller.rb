@@ -14,6 +14,7 @@ class EndPointsController < ApplicationController
       {"$match": {"end_points._id": BSON::ObjectId(params[:id])}},
       {"$replaceRoot": {"newRoot": "$end_points"}}
     ]).first
+    @query_parameters = end_point[:query_parameters]
     @end_point = EndPoint.new({id: end_point[:_id], name: end_point[:name], description: end_point[:description], http_method: end_point[:http_method]})
     @resource = Resource.find(session[:resource]["$oid"])
   end

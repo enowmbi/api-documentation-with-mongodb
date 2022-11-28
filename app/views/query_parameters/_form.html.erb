@@ -1,0 +1,37 @@
+<%= form_with(model: QueryParameter.new) do |query_param| %>
+  <div>
+    <%= query_param.label :name, style: "display:block" %>
+    <%= query_param.text_field :name %>
+  </div>
+
+  <div>
+    <%= query_param.label :description, style: "display:block" %>
+    <%= query_param.text_area :description %>
+  </div>
+
+  <div>
+    <%= query_param.label :type, style: "display:block" %>
+    <%= query_param.text_field :type %>
+  </div>
+
+  <div>
+    <%= query_param.label :default, style: "display:block" %>
+    <%= query_param.text_field :default %>
+  </div>
+
+  <div>
+    <%= query_param.label :valid_values, style: "display:block" %>
+    <%= query_param.text_field :valid_values, multiple: true %>
+  </div>
+
+  <div>
+    <%= query_param.check_box :optional %>
+    <%= query_param.label :optional %>
+  </div>
+  <%= query_param.hidden_field :resource_id, value: resource._id %>
+  <p>
+  <div>
+    <%= query_param.submit %>
+  </div>
+  </p>
+<% end %>
