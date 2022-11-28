@@ -1,5 +1,5 @@
 class EndPointsController < ApplicationController
-  before_action :set_end_point, only: %i[edit update destroy]
+  before_action :set_end_point, only: %i[show edit update destroy]
 
   # GET /end_points or /end_points.json
   def index
@@ -8,16 +8,7 @@ class EndPointsController < ApplicationController
   end
 
   # GET /end_points/1 or /end_points/1.json
-  def show
-    end_point = Resource.collection.aggregate([
-      {"$unwind": "$end_points"},
-      {"$match": {"end_points._id": BSON::ObjectId(params[:id])}},
-      {"$replaceRoot": {"newRoot": "$end_points"}}
-    ]).first
-    @query_parameters = end_point[:query_parameters]
-    @end_point = EndPoint.new({id: end_point[:_id], name: end_point[:name], description: end_point[:description], http_method: end_point[:http_method]})
-    @resource = Resource.find(params[:resource_id])
-  end
+  def show; end
 
   # GET /end_points/new
   def new
@@ -26,8 +17,7 @@ class EndPointsController < ApplicationController
   end
 
   # GET /end_points/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /end_points or /end_points.json
   def create
@@ -71,8 +61,8 @@ class EndPointsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_end_point
-      resource = Resource.find(params[:resource_id])
-      @end_point = resource.end_points.where({ _id: params[:id] }).first
+      @resource = Resource.find(params[:resource_id])
+      @end_point = @resource.end_points.where({ _id: params[:id] }).first
     end
 
     # Only allow a list of trusted parameters through.

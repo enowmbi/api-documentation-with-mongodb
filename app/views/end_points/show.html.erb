@@ -1,5 +1,4 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @end_point, resource: @resource %>
 
 <h3>New Query Parameter</h3>
@@ -9,7 +8,7 @@
 
 <h3>Query Parameters</h3>
 <div id="query-parameters">
-  <% @query_parameters&.each do |query_parameter| %>
+  <% @end_point.query_parameters&.each do |query_parameter| %>
     <%= render "query_parameters/query_parameter", query_parameter: query_parameter %>
   <% end %>
 </div>
