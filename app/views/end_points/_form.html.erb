@@ -1,4 +1,4 @@
-<%= form_with(model: end_point) do |form| %>
+<%= form_with(model: [@resource, @resource.end_points.build]) do |form| %>
   <% if end_point.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(end_point.errors.count, "error") %> prohibited this end_point from being saved:</h2>

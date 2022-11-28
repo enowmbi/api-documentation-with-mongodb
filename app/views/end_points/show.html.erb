@@ -2,26 +2,21 @@
 
 <%= render @end_point, resource: @resource %>
 
-<div id="end-points">
-  <% @resource.end_points.each do |end_point| %>
-    <%= render "end_points/end_point", end_point: end_point, resource: @resource %>
-  <% end %>
-</div>
-
+<h3>New Query Parameter</h3>
 <div id="query-parameter-form">
-  <%= render "query_parameters/form", resource: @resource %>
+  <%= render "query_parameters/form", resource: @resource, end_point: @end_point %>
 </div>
 
 <h3>Query Parameters</h3>
 <div id="query-parameters">
-  <% @query_parameters.each do |query_parameter| %>
+  <% @query_parameters&.each do |query_parameter| %>
     <%= render "query_parameters/query_parameter", query_parameter: query_parameter %>
   <% end %>
 </div>
 
 <div>
-  <%= link_to "Edit this end point", edit_end_point_path(@resource, @end_point._id) %> |
-  <%= link_to "Back to end points", end_points_path %>
+  <%= link_to "Edit this end point", edit_resource_end_point_path(@resource, @end_point.id) %> |
+  <%= link_to "Back to end points", resource_end_points_path(@resource) %>
 
-  <%= button_to "Destroy this end point", @end_point, method: :delete %>
+  <%= button_to "Destroy this end point", resource_end_point_path(@resource, @end_point.id), method: :delete %>
 </div>

@@ -6,9 +6,9 @@
   <% @end_points.each do |end_point| %>
     <%= render end_point %>
     <p>
-      <%= link_to "Show this end point", end_point %>
+    <%= link_to "Show this end point", resource_end_point_path(@resource, end_point) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New end point", new_end_point_path %>
+<%= link_to "New end point", new_resource_end_point_path(@resource) %>

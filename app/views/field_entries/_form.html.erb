@@ -1,4 +1,4 @@
-<%= form_with(model: FieldEntry.new) do |field_entry| %>
+<%= form_with(model: [@resource, @resource.field_entries.build]) do |field_entry| %>
   <div>
     <%= field_entry.label :name, style: "display: block" %>
     <%= field_entry.text_field :name %>

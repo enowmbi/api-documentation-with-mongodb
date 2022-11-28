@@ -1,4 +1,4 @@
-<%= form_with(model: QueryParameter.new) do |query_param| %>
+<%= form_with(url: resource_end_point_query_parameters_path(resource.id, end_point.id), method: :post) do |query_param| %>
   <div>
     <%= query_param.label :name, style: "display:block" %>
     <%= query_param.text_field :name %>

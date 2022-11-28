@@ -3,7 +3,7 @@ class EndPointsController < ApplicationController
 
   # GET /end_points or /end_points.json
   def index
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find(params[:resource_id])
     @end_points = @resource.end_points
   end
 
@@ -16,11 +16,12 @@ class EndPointsController < ApplicationController
     ]).first
     @query_parameters = end_point[:query_parameters]
     @end_point = EndPoint.new({id: end_point[:_id], name: end_point[:name], description: end_point[:description], http_method: end_point[:http_method]})
-    @resource = Resource.find(session[:resource]["$oid"])
+    @resource = Resource.find(params[:resource_id])
   end
 
   # GET /end_points/new
   def new
+    @resource = Resource.find(params[:resource_id])
     @end_point = EndPoint.new
   end
 
@@ -30,13 +31,12 @@ class EndPointsController < ApplicationController
 
   # POST /end_points or /end_points.json
   def create
-    @resource = Resource.find(params[:id])
-    session[:resource] = @resource._id
+    @resource = Resource.find(params[:resource_id])
     @end_point = @resource.end_points.build(end_point_params)
 
     respond_to do |format|
       if @end_point.save
-        format.html { redirect_to end_point_url(session[:resource], @end_point), notice: "End point was successfully created." }
+        format.html { redirect_to resource_end_point_url(@resource, @end_point), notice: "End point was successfully created." }
         format.json { render :show, status: :created, location: @end_point }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -71,7 +71,8 @@ class EndPointsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_end_point
-      @end_point = EndPoint.find(params[:id])
+      resource = Resource.find(params[:resource_id])
+      @end_point = resource.end_points.where({ _id: params[:id] }).first
     end
 
     # Only allow a list of trusted parameters through.
