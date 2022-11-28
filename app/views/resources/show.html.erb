@@ -6,7 +6,10 @@
 </div>
 <div id="field-entries">
   <% @resource.field_entries.each do |field_entry| %>
-    <%= render "field_entries/field_entry", field_entry: field_entry %>
+    <% unless field_entry.name.nil? %>
+      <%= render "field_entries/field_entry", field_entry: field_entry %>
+      <hr/>
+    <% end %>
   <% end %>
 </div>
 
