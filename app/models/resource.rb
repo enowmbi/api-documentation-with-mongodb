@@ -7,4 +7,6 @@ class Resource
 
   embeds_many :field_entries
   embeds_many :end_points
+
+  default_scope -> { order(created_at: :desc) }
 end
