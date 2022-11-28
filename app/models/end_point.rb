@@ -7,4 +7,6 @@ class EndPoint
 
   embeds_many :query_parameters
   embedded_in :resource
+
+  default_scope -> { order(_id: :desc) }
 end
