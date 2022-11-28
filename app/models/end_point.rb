@@ -1,5 +1,6 @@
 class EndPoint
   include Mongoid::Document
+  include DefaultScope
 
   field :name, type: String
   field :http_method, type: String
@@ -7,6 +8,4 @@ class EndPoint
 
   embeds_many :query_parameters
   embedded_in :resource
-
-  default_scope -> { order(_id: :desc) }
 end
